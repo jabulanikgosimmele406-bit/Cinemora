@@ -26,4 +26,19 @@ npm install
 npm run dev
 ```
 
-Set `OPENAI_API_KEY`, `FAL_KEY`, and `FAL_TEXT_TO_VIDEO_MODEL` in the backend environment. Never commit secrets or `.env` files.
+Set `OPENAI_API_KEY`, `FAL_KEY`, and `FAL_TEXT_TO_VIDEO_MODEL` in the backend environment. Never commit secrets or `.env` files.services:
+  - type: web
+    name: cinemora-ai-api
+    runtime: docker
+    rootDir: backend
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: FAL_KEY
+        sync: false
+      - key: FAL_TEXT_TO_VIDEO_MODEL
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false
